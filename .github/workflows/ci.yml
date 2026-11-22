@@ -1,0 +1,19 @@
+name: thought-ai
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feat/thought-bar, main]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: make
+      - name: Run with input 3
+        run: echo 3 | ./thought-ai
+      - name: Run with input 0
+        run: echo 0 | ./thought-ai
